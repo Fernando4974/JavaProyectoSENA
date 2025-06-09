@@ -19,13 +19,14 @@ public class Main {
         
         Controlador control= new Controlador();
         //control.Procesos();
-        
+        do{ 
         objMenu.Procesos();
         int opcion = sc.nextInt();
+        System.out.print("\033[H\033[2J");
         control.ControlCentral(opcion);
         
-       //do{
-       //}while(!objMenu.SalidaMenu());
+      
+       }while(!objMenu.SalidaMenu());
         
        
        // System.out.print("Ingrese su nombre: ");

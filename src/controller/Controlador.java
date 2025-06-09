@@ -3,7 +3,6 @@ package controller;
 
 import model.*;
 import util.PDFGenerator;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.time.LocalDate;
@@ -21,31 +20,31 @@ public class Controlador {
     
         switch(opcion){
         
-            case 1:
+            case 1://agregar amigo
                 objMenu.Encabezado(opcion);
-                System.out.println("Not Developed case 1");
+                System.out.println("Not Developed case 1 agregar amigo");
                 break;
-            case 2:
+            case 2://editar
                 objMenu.Encabezado(opcion);
-                 System.out.println("Not Developed case 2");
+                 System.out.println("Not Developed case 2 editar");
                 break;
-            case 3: 
+            case 3: //ver todos
                 objMenu.Encabezado(opcion);
-                 System.out.println("Not Developed case 3");
+                 System.out.println("Not Developed case 3 ver todos");
                 break;
-            case 4:
+            case 4://eliminar
                 objMenu.Encabezado(opcion);
-                 System.out.println("Not Developed case 4");
+                 System.out.println("Not Developed case 4 eliminar");
                 break;
-            case 5:
+            case 5://pdf (cita)
                 
-                do{
+                
                 objMenu.Encabezado(opcion);
                this.procesarPersona(inputs.ObtenerNombre(),inputs.ObtenerFecha());
                
-                 System.out.println("Not Developed");
+                 System.out.println("Ejecucion Completada pdf cita");
                
-                }while(!inputs.Salida());
+                
                  break;
             default:
                  System.out.println("Default");
@@ -53,6 +52,7 @@ public class Controlador {
         
         
         }
+        
     
     }
     
@@ -76,5 +76,23 @@ public class Controlador {
 
         // Generar PDF
         PDFGenerator.generarPDF(persona.getNombre(), fechaNacimiento.toString(), signo);
+ 
+    
+    
     }
+    
+    public void AgregarAmigo(){
+          SignoZodiacal signoZodiacal= new SignoZodiacal();
+        this.procesarPersona(inputs.ObtenerNombre(),inputs.ObtenerFecha());
+      
+        LocalDate date = new Date();
+        String signo = signoZodiacal.calcularSigno(inputs.ObtenerFecha());
+        Persona persona = new Persona(inputs.ObtenerNombre(),signo);
+        persona.guardar(inputs.ObtenerNombre(), signoZodiacal);
+        inputs.ObtenerNombre();
+        inputs.ObtenerFecha();
+    
+    };
 }
+
+

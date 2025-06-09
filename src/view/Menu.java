@@ -79,7 +79,9 @@ public class Menu {
   
      for(int i=0; i<5; i++){
      
-         System.out.println("Marque "+this.opciones[i][0]+" para "+ this.opciones[i][1]);
+         System.out.println("----------------- Marque "+this.opciones[i][0]+" para "+ this.opciones[i][1]+" "
+                 + ""
+                 + "---");
      }
     }
        public void Procesos(){

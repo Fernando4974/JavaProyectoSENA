@@ -7,10 +7,10 @@
             <file>file:/C:/Users/Fertch/Documents/NetBeansProjects/ZodiacoConsola/src/view/Menu.java</file>
             <file>file:/C:/Users/Fertch/Documents/NetBeansProjects/ZodiacoConsola/src/controller/Controlador.java</file>
             <file>file:/C:/Users/Fertch/Documents/NetBeansProjects/ZodiacoConsola/src/model/Persona.java</file>
-            <file>file:/C:/Users/Fertch/Documents/NetBeansProjects/ZodiacoConsola/src/model/SignoZodiacal.java</file>
-            <file>file:/C:/Users/Fertch/Documents/NetBeansProjects/ZodiacoConsola/src/util/PDFGenerator.java</file>
-            <file>file:/C:/Users/Fertch/Documents/NetBeansProjects/ZodiacoConsola/src/model/ConexionBD.java</file>
             <file>file:/C:/Users/Fertch/Documents/NetBeansProjects/ZodiacoConsola/src/util/InputUtils.java</file>
+            <file>file:/C:/Users/Fertch/Documents/NetBeansProjects/ZodiacoConsola/src/model/IPersonaDAO.java</file>
+            <file>file:/C:/Users/Fertch/Documents/NetBeansProjects/ZodiacoConsola/src/model/PersonaDAO.java</file>
+            <file>file:/C:/Users/Fertch/Documents/NetBeansProjects/ZodiacoConsola/src/model/SignoZodiacal.java</file>
         </group>
     </open-files>
 </project-private>
