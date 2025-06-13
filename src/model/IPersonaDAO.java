@@ -15,11 +15,13 @@ import java.util.List;
  */
 public interface IPersonaDAO {
     //metodo guarda nueva personona en bd
-    void guardar(Persona persona , String signoZodiacal)throws SQLException;
+    int guardar(Persona persona , String signoZodiacal)throws SQLException;
     //meotodo obetener persona po id}
     Persona obtenerPorId(int id)throws SQLException; 
     //metodo obetener todos
     List<Persona> obtenerTodos() throws SQLException;
+    //obtener todos solo nombre y id
+    public List<Persona> obtenerTodosSoloIdNombre() throws SQLException;
     //metodo actualizar
     void actualizar(Persona persona, String signoZodiacal)throws SQLException;
     //metodo elimniar persona

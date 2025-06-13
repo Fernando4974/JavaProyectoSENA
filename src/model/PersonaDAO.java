@@ -3,12 +3,14 @@ package model;
 
 
 
+import com.mysql.jdbc.Statement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
 import java.sql.SQLException;
 import java.sql.Date; // Importación correcta para java.sql.Date
-import java.time.LocalDate; // Importación correcta para java.time.LocalDate
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import model.ConexionBD;
@@ -25,15 +27,17 @@ public class  PersonaDAO implements IPersonaDAO {
        
       
     @Override
-    public void guardar(Persona persona, String signoZodiacal) throws SQLException {
+    public int guardar(Persona persona, String signoZodiacal) throws SQLException {
     
+        int id=0;
         String sql = "INSERT INTO personas (nombre, fecha_nacimiento, signo_zodiacal) VALUES (?, ?, ?)";
         Connection conn = null;
         PreparedStatement stmt = null;
+       // ResultSet rs = null;
 
         try {
             conn = ConexionBD.conectar();
-            stmt = conn.prepareStatement(sql);
+            stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1, persona.getNombre());
             // Convierte LocalDate a java.sql.Date para el PreparedStatement
             stmt.setDate(2, Date.valueOf(persona.getFechaNacimiento())); // getFechaNacimiento()
@@ -41,11 +45,15 @@ public class  PersonaDAO implements IPersonaDAO {
 
             stmt.executeUpdate();
             System.out.println("Persona " + persona.getNombre() + " guardada con éxito.");
-
+            //if(rs.next()){
+              //  id= rs.getInt(1);
+            
+            //};
         } finally {
             if (stmt != null) stmt.close();
             if (conn != null) conn.close();
         }
+        return id;
     }
     
     
@@ -69,8 +77,10 @@ public class  PersonaDAO implements IPersonaDAO {
            persona= new Persona();
            persona.setId(rs.getInt("id"));
            persona.setNombre(rs.getString("nombre"));
-           persona.setEdad(rs.getInt("edad"));
-           // Agrega los demas campos segun tu clase persona
+           //fecha nacimiento
+           Date date= rs.getDate("fecha_nacimiento");
+           LocalDate dateParceado = date.toLocalDate();
+           persona.setFechaNacimiento(dateParceado);
        }
     } finally {
         if (rs != null) rs.close();
@@ -79,6 +89,40 @@ public class  PersonaDAO implements IPersonaDAO {
     }
     return persona;
     }
+    @Override 
+    public List<Persona> obtenerTodosSoloIdNombre() throws SQLException{
+     List<Persona> personas = new ArrayList<Persona>();
+     String sql = "SELECT id , nombre FROM personas";
+     Connection conn = null;
+     ResultSet rs= null;
+     PreparedStatement stmt =null;
+     
+     try{
+     
+         conn= ConexionBD.conectar();
+         stmt= conn.prepareStatement(sql);
+         rs= stmt.executeQuery();
+         
+         while(rs.next()){
+         
+         Persona persona = new Persona();
+         persona.setId(rs.getInt("id"));
+         persona.setNombre(rs.getString("nombre"));
+         personas.add(persona);
+         
+         
+         }
+         
+     }
+     finally{
+     if(conn!=null){conn.close();}
+     if(rs!=null){rs.close();}
+     if(stmt!=null){stmt.close();}
+     
+     }
+     
+     return personas;
+    }
 
     @Override
     public List<Persona> obtenerTodos() throws SQLException {
@@ -86,7 +130,7 @@ public class  PersonaDAO implements IPersonaDAO {
     
         List<Persona> personas = new ArrayList<Persona>();
     
-        String sql = "SELECT id, nombre, fecha_nacmlimiento, signo_zodiacal FROM persona";
+        String sql = "SELECT id, nombre, fecha_nacimiento, signo_zodiacal FROM personas";
         Connection conn= null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -102,7 +146,7 @@ public class  PersonaDAO implements IPersonaDAO {
             Persona persona = new Persona();
             persona.setId(rs.getInt("id"));
             persona.setNombre(rs.getNString("nombre"));
-            persona.setFechaNacimiento(rs.getDate("fecha_nacimineto").toLocalDate());
+            persona.setFechaNacimiento(rs.getDate("fecha_nacimiento").toLocalDate());
             persona.setSignoZodiacal(rs.getString("signo_zodiacal"));
             
             personas.add(persona);

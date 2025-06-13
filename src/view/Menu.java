@@ -13,10 +13,10 @@ import java.util.Scanner;
 public class Menu {
     
         public String[][] opciones = {
-        {"1","Agregar Amigo"},
-        {"2","Editar Amigos"},
-        {"3","Ver Lista de amigos"},
-        {"4","Eliminar Amigo"},
+        {"1","Agregar Contacto"},
+        {"2","Editar Contacto"},
+        {"3","Ver Lista de Contactos"},
+        {"4","Eliminar Contacto"},
         {"5","Generar PDF"}
              
     };
@@ -95,7 +95,7 @@ public class Menu {
        public void Encabezado(int opcion){
        opcion--;
        System.out.println("----------------------------------------------\n"+
-                          "-----------------"+this.opciones[opcion][1]+"-----------------\n"+
+                          "-------------- "+this.opciones[opcion][1]+" -------------\n"+
                           "----------------------------------------------");
                            
        }

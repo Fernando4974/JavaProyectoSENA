@@ -82,7 +82,23 @@ public class Persona {
         }
         return Period.between(fechaNacimiento, LocalDate.now()).getYears();
     }
+      @Override
+    public String toString() {
+        return 
+               "ID=" + id + "\n"+
+               ", Nombre='" + nombre + "\n" +
+               ", Edad=" + edad + "\n"+
+               ", Fecha Nacimiento=" + fechaNacimiento +"\n"+
+               ", Signo Zodiacal='" + signoZodiacal + "\n" +
+               "-----------------------------------------------------------------\n";
+    }
+        
+    public String toSrtingShort(Persona p){
+                  
+    return 
+                    "ID=" + p.getId() + " |||"+", Nombre='" + p.getNombre() + "\n" +
+              "-----------------------------------------------------------------\n";
+    }
     
-    // Puedes añadir un método similar para calcular el signo zodiacal basado en la fechaNacimiento
-    // private String calcularSignoZodiacal(LocalDate fechaNacimiento) { ... }
+ 
 }

@@ -9,7 +9,7 @@ import java.io.FileOutputStream;
 
 public class PDFGenerator {
    static String nombreArchivo;
-    public static void generarPDF(String nombre, String fechaNacimiento, String signo) {
+    public static void generarPDF(String nombre, String fechaNacimiento, String signo,String fecha,String hora,String lugar,String detalles) {
         try {
             Document document = new Document();
             
@@ -19,6 +19,10 @@ public class PDFGenerator {
             document.add(new Paragraph("Nombre: " + nombre));
             document.add(new Paragraph("Fecha de nacimiento: " + fechaNacimiento));
             document.add(new Paragraph("Signo zodiacal: " + signo));
+            document.add(new Paragraph("Fecha:" + fecha));
+            document.add(new Paragraph("Hora:" + hora));
+            document.add(new Paragraph("Lugar:" + lugar));
+            document.add(new Paragraph("Detalles:" + detalles));
             document.close();
             System.out.println("PDF generado exitosamente.");
             File file = new File(nombreArchivo);

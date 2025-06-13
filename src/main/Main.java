@@ -3,14 +3,14 @@ package main;
 
 import controller.Controlador;
 import view.Menu;
-
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Main {
    
     
-    public static void main(String[] args) {
+    public static void main(String[] args)throws SQLException {
         
         Menu objMenu = new Menu();
         objMenu.Inicio();
