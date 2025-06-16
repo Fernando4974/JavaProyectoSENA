@@ -17,7 +17,7 @@ public class Menu {
         {"2","Editar Contacto"},
         {"3","Ver Lista de Contactos"},
         {"4","Eliminar Contacto"},
-        {"5","Generar PDF"}
+        {"5","Generar Cita en formato PDF"}
              
     };
 
@@ -31,8 +31,8 @@ public class Menu {
         System.out.println("---------------------------- Fernando Villarreal ---------------------------");
         System.out.println("----------------------------------------------------------------------------");
         System.out.println("-------------------------------- Docente: ----------------------------------");
-        System.out.println("------------------------------- Luis Fernando ------------------------------");
-        System.out.println("--------------------------------- SENA 2025 --------------------------------");
+        System.out.println("------------------------------ Luis Fernando -------------------------------");
+        System.out.println("-------------------------------- SENA 2025 ---------------------------------");
         System.out.println("----------------------------------------------------------------------------");
         System.out.println("----------------------------------------------------------------------------");
         System.out.println("                ____     ________     ____     ____      ________            ");
@@ -61,7 +61,7 @@ public class Menu {
 
             entrada = entrada.toUpperCase();
 
-            if (entrada == "S") {
+            if (entrada.toLowerCase().equals("s")) {
 
                 return true;
             } else {

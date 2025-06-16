@@ -8,6 +8,7 @@ import java.util.Scanner;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  *
  * @author Fertch
@@ -81,6 +82,17 @@ public class InputUtils {
          
               
      return r;
+     }
+     public List<String> datosActualizar(){
+     
+         List<String> listaDatosActualizar= new ArrayList();
+         
+            System.out.println("Ingrese El nuevo nombre");
+            listaDatosActualizar.add(sc.nextLine());
+       
+            listaDatosActualizar.add(sc.nextLine());
+         
+     return listaDatosActualizar;
      }
      public List<String> datosParaPdf(){
      List<String> ListaDedatosParaPdf= new ArrayList<String>();

@@ -38,7 +38,44 @@ public class Controlador {
             case 2://editar
                 objMenu.Encabezado(opcion);
                  System.out.println("Not Developed case 2 editar");
-                break;
+                 
+                 if(!inputs.preguntaConoceIdCase("Editar")){
+                     
+                     List<Persona> personas= ipersonaDAO.obtenerTodos();
+                     for( int i=0 ; i< personas.size(); i++ ){
+                       
+                         Persona p= personas.get(i);
+                         System.out.println("------------------------");
+                         System.out.println("ID : "+p.getId()+"||| Nombre: "+p.getNombre());
+                     }
+                 
+                 }
+                 int idEditar = inputs.preguntaIngreseIdCase("Editar");
+                 //List<String> listaDatos= inputs.datosActualizar();
+                 Persona pp = new Persona();
+                 pp.setId(idEditar);
+                 System.out.println("------------------------");
+                 System.out.println("Nuevos Datos");
+                 System.out.println("------------------------");
+                 pp.setNombre(inputs.ObtenerNombre());
+                 System.out.println("------------------------");
+                 pp.setFechaNacimiento(inputs.ObtenerFecha());
+                 System.out.println("------------------------");
+                 
+                 if(inputs.confirmacion()){
+                 ipersonaDAO.actualizar(pp, signo.calcularSigno(pp.getFechaNacimiento()));
+         
+                     System.out.println("------------------------");
+                         System.out.println("ID : "+pp.getId()+"||| Nombre: "+pp.getNombre());
+                         System.out.println("------------------------");
+                 }else{
+                      System.out.println("------------------------");
+                 System.out.println("Operacion Cancelada");
+                      System.out.println("------------------------");
+                 }
+                 
+                 
+                 break;
                 
                 
                 
@@ -46,7 +83,7 @@ public class Controlador {
                 
             case 3: //ver todos
                 objMenu.Encabezado(opcion);
-                 System.out.println("Not Developed case 3 ver todos");
+                 System.out.println("Partial case 3 ver todos, falta el pdf cono todos los contactos");
                  
                  List<Persona> personasAll =ipersonaDAO.obtenerTodos();
                  for(int i=0; i < personasAll.size();i++){
@@ -164,7 +201,7 @@ public class Controlador {
     
     
     }
-    public void generarPdf(Persona persona, LocalDate fechaNacimiento,String signo, String fecha,String hora,String lugar,String detalles)throws SQLException{
+    public void generarPdf(Persona persona, LocalDate fechaNacimiento,String signo,String fecha,String hora,String lugar,String detalles)throws SQLException{
     
      PDFGenerator.generarPDF(persona.getNombre(), fechaNacimiento.toString(), signo,fecha,hora,lugar,detalles);
  

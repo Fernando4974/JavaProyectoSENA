@@ -192,6 +192,7 @@ public class  PersonaDAO implements IPersonaDAO {
 
             stmt.executeUpdate();
             System.out.println("Persona " + persona.getNombre() + " actualizada con éxito.");
+         
         }
         finally{
 
