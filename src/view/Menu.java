@@ -54,7 +54,7 @@ public class Menu {
 
     public boolean SalidaMenu() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Cerrar el Sistema / Iniciar = S/N");
+        System.out.println("Cerrar el Sistema / Continuar = S/N");
         //  var entrada = Integer.parseInt(sc.nextLine());
         var entrada = sc.nextLine();
         if (entrada != null) {
